@@ -10,8 +10,8 @@ load_all_data()
 app = Flask(__name__)
 api = Api(app)
 # Endpoint that returns a list of regions
-api.add_resource(RegionList, '/regions')
+api.add_resource(RegionList, '/')
 # Endpoint that returns a json with all the Climate conditions for all years
-api.add_resource(RegionConditions, '/region/<string:name>')
+api.add_resource(RegionConditions, '/regions')
 
 app.run(port=5000, debug=True)
