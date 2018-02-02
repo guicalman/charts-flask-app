@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_restful import Api
 from services import RegionList, RegionCompare, TemperatureList, YearList, ConditionList
 from load_data import load_all_data
@@ -8,6 +9,7 @@ load_all_data()
 
 # Configures the Climate Backend endpoints
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 # Endpoint that returns a list of regions
 api.add_resource(RegionList, '/')

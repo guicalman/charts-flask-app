@@ -20,7 +20,7 @@ class TemperatureList(Resource):
     @staticmethod
     def serialize_temperature_data(resultset, year, region):
 
-        temp_conditions=["Tmax","Tmin","Tmean"]
+        temp_conditions=['Tmax','Tmin','Tmean']
         months = ['JAN', 'FEB', 'MAR', 'APR','MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
         all_arrays = [list(row) for row in resultset]
         all_matrix=np.array(all_arrays)
@@ -73,7 +73,7 @@ class RegionCompare(Resource):
                 else:
                     value = 'na'
                 mont_values.append(value)
-            r_dic.update({region: {condition: mont_values}})
+            r_dic.update({region: mont_values})
         return r_dic
 
 
