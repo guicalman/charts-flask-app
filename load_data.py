@@ -51,8 +51,8 @@ def create_db(db_path):
 
     connection = sqlite3.connect(db_path)
     cursor = connection.cursor()
-    create_table = "CREATE TABLE IF NOT EXISTS w_conditions (region_name text, c_year int, c_month text, w_condition, " \
-                                                                "text, w_value real, " \
+    create_table = "CREATE TABLE IF NOT EXISTS w_conditions (region_name text, c_year int, c_month text," \
+                                                                " w_condition text, w_value real, " \
                                                                 "PRIMARY KEY(region_name, c_year, c_month, w_condition))"
     cursor.execute(create_table)
     connection.commit()

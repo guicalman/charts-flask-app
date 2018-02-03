@@ -29,8 +29,8 @@ class TemperatureList(Resource):
         for condition in temp_conditions:
             mont_values=[]
             for month in months:
-                query = all_df[(all_df['region']==region) & (all_df['year']==year)
-                               & (all_df['month']==month) & (all_df['condition']==condition)] ['value']
+                df_filtered = all_df[(all_df['month']==month) & (all_df['condition']==condition)]
+                query= df_filtered['value']
                 if not query.empty:
                     value = float(query.iloc[0])
                 else:
@@ -65,8 +65,7 @@ class RegionCompare(Resource):
         for region in regions:
             mont_values=[]
             for month in months:
-                query = all_df[(all_df['region']==region) & (all_df['year']==year)
-                               & (all_df['month']==month) & (all_df['condition']==condition)] ['value']
+                query = all_df[(all_df['region']==region) & (all_df['month']==month)] ['value']
                 if not query.empty:
                     value = float(query.iloc[0])
                 else:
