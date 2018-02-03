@@ -2,10 +2,12 @@ import sqlite3
 import pandas as pd
 import numpy as np
 from flask_restful import Resource, reqparse
-
+from load_data import load_all_data
 
 class TemperatureList(Resource):
     def get(self, region, year):
+        # Exceutes the method that populate/update the database
+        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT  region_name,c_year, c_month, w_condition, w_value  FROM w_conditions " \
@@ -44,6 +46,8 @@ class TemperatureList(Resource):
 class RegionCompare(Resource):
 
     def get(self, year, condition):
+        # Exceutes the method that populate/update the database
+        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT  region_name,c_year, c_month, w_condition, w_value  FROM w_conditions " \
@@ -79,6 +83,8 @@ class RegionCompare(Resource):
 
 class ConditionList(Resource):
     def get(self):
+        # Exceutes the method that populate/update the database
+        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT DISTINCT w_condition FROM w_conditions"
@@ -92,6 +98,8 @@ class ConditionList(Resource):
 
 class YearList(Resource):
     def get(self):
+        # Exceutes the method that populate/update the database
+        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT DISTINCT c_year FROM w_conditions"
@@ -105,6 +113,8 @@ class YearList(Resource):
 
 class RegionList(Resource):
     def get(self):
+        # Exceutes the method that populate/update the database
+        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT DISTINCT region_name FROM w_conditions"
