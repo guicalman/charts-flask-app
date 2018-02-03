@@ -6,8 +6,6 @@ from load_data import load_all_data
 
 class TemperatureList(Resource):
     def get(self, region, year):
-        # Exceutes the method that populate/update the database
-        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT  region_name,c_year, c_month, w_condition, w_value  FROM w_conditions " \
@@ -21,7 +19,6 @@ class TemperatureList(Resource):
 
     @staticmethod
     def serialize_temperature_data(resultset, year, region):
-
         temp_conditions=['Tmax','Tmin','Tmean']
         months = ['JAN', 'FEB', 'MAR', 'APR','MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
         all_arrays = [list(row) for row in resultset]
@@ -46,8 +43,6 @@ class TemperatureList(Resource):
 class RegionCompare(Resource):
 
     def get(self, year, condition):
-        # Exceutes the method that populate/update the database
-        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT  region_name,c_year, c_month, w_condition, w_value  FROM w_conditions " \
@@ -83,8 +78,6 @@ class RegionCompare(Resource):
 
 class ConditionList(Resource):
     def get(self):
-        # Exceutes the method that populate/update the database
-        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT DISTINCT w_condition FROM w_conditions"
@@ -98,8 +91,6 @@ class ConditionList(Resource):
 
 class YearList(Resource):
     def get(self):
-        # Exceutes the method that populate/update the database
-        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT DISTINCT c_year FROM w_conditions"
@@ -112,9 +103,10 @@ class YearList(Resource):
 
 
 class RegionList(Resource):
+    # Exceutes the method that populate/update the database
+    # This method should be called first to Create/Update the DB information
+    load_all_data()
     def get(self):
-        # Exceutes the method that populate/update the database
-        load_all_data()
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         query = "SELECT DISTINCT region_name FROM w_conditions"

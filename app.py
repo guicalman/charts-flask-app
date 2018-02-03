@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
-from services import RegionList, RegionCompare, TemperatureList, YearList, ConditionList
+from services import RegionList, RegionCompare, TemperatureList, YearList, ConditionList, RefreshDB
 
 # Configures the Climate Backend endpoints
 app = Flask(__name__)
