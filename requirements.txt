@@ -4,3 +4,4 @@ Flask==0.12.2
 pandas==0.22.0
 numpy==1.14.0
 Flask-Cors==3.0.3
+uwsgi
