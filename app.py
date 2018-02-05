@@ -14,9 +14,9 @@ api.add_resource(YearList, '/years')
 # Endpoint that returns a json with all the Climate conditions all the regions in an
 # specicif year and specific condition
 api.add_resource(RegionCompare, '/compare/<string:year>/<string:condition>')
-# Endpoint that returns Min, Max and Mean Temperature for a specific region in a year
+# Endpoint that returns Min, Max and Mean Temperature for an specific region and year
 api.add_resource(TemperatureList, '/temperature/<string:region>/<string:year>')
-#Endpoint the returns the list of conditions in the DB
+#Endpoint that returns the list of conditions in the DB
 api.add_resource(ConditionList, '/conditions')
 
 if __name__ == '__main__':

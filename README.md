@@ -16,4 +16,12 @@
     ]
 }
 ```
-8.
+
+# Working project
+
+If you want to have a try of this project you can access to the following Enp Points:
+1. Endpoint that returns a list of regions (Every time you call this endpoint the databes is updated with https://www.metoffice.gov.uk/ data): https://uk-climate-api.herokuapp.com/
+1. Endpoint that returns the list of years stored in db: https://uk-climate-api.herokuapp.com/years
+1. Endpoint that returns the list of conditions in the DB: https://uk-climate-api.herokuapp.com/conditions
+1.  Endpoint that returns all Climate conditions for all the regions for an specific year and condition: https://uk-climate-api.herokuapp.com/compare/`<string:year>/<string:condition>`
+1. Endpoint that returns Min, Max and Mean Temperature for an specific region and year: https://uk-climate-api.herokuapp.com/temperature/`<string:region>/<string:year>`
